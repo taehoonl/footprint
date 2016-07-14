@@ -4,17 +4,19 @@ Find out where your internet traffic is coming from. This app shows the location
 
 ## How to start app:
 
-1. Install dependencies:
+**Install dependencies:**
 
 > sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+
 > sudo pip install virtualenv django djangorestframework psycopg2 futures dpkt pypcap
+
 > install all dependencies in requirement.txt to virtualenv
 
-2. Change postgresql setting:
+**Change postgresql setting:**
 
 change '/etc/postgresql/(version)/main/pg_hba.conf' file
 
-'''
+<pre>
   # Database administrative login by Unix domain socket
   local   all             postgres                                trust
 
@@ -26,12 +28,12 @@ change '/etc/postgresql/(version)/main/pg_hba.conf' file
   host    all             all             127.0.0.1/32            md5
   # IPv6 local connections:
   host    all             all             ::1/128                 md5
-'''
+</pre>
 
-3. Download [IP2LOCATION database](https://lite.ip2location.com/database-ip-country-region-city-latitude-longitude) and place it in data/ip2location folder
+**Download [IP2LOCATION database](https://lite.ip2location.com/database-ip-country-region-city-latitude-longitude) and place it in data/ip2location folder**
 
-4. Set 'project_path' in main.ini
+**Set 'project_path' in main.ini**
 
-5. Start app using script:
+**Start app using script**
 
 $ python start_app.py
