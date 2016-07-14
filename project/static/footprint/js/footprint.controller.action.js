@@ -59,7 +59,7 @@ app.controller('actionController', function($rootScope, $scope, $interval, footp
   };
 
   var _startLive = function () {
-    _disableLiveBtns(true); // disable start/stop
+    _disableModeBtns(true); // disable start/stop
 
     footprintService.startLive().then(
       function successCallback(response) {
@@ -79,12 +79,12 @@ app.controller('actionController', function($rootScope, $scope, $interval, footp
         $scope.isLive = false;
       })
     .finally(function () {
-      _disableLiveBtns(false);
+      _disableModeBtns(false);
     });
   };
 
   var _stopLive = function () {
-    _disableLiveBtns(true); // disable start/stop
+    _disableModeBtns(true); // disable start/stop
 
     footprintService.stopLive().then(
       function successCallback(response) {
@@ -105,13 +105,14 @@ app.controller('actionController', function($rootScope, $scope, $interval, footp
         $scope.isLive = true;
       })
     .finally(function () {
-      _disableLiveBtns(false);
+      _disableModeBtns(false);
     });
   };
 
-  var _disableLiveBtns = function(value) {
+  var _disableModeBtns = function(value) {
     $startLiveBtn.prop('disabled', value);
     $stopLiveBtn.prop('disabled', value);
+    $loadLogBtn.prop('disabled', value);
   }
 
 });

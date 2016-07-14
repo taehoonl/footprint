@@ -1,0 +1,21 @@
+UI panel
+-search ip = show the location of ip address of interest
+-mode
+-details = sent/received data details(protocols/ip/hostnames)
+-refresh button? (or automatic when page refreshes?)
+
+per marker :
+  data
+    sent
+      amount
+      endpoints(ip and hostname)
+    receive
+      amount
+      endpoints(ip and hostname)
+
+  diagrams
+    sent vs received
+
+
+on map:
+  unit indicator(ex. yellow = kB)

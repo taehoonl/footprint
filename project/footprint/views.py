@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
-from django.views.decorators.http import require_http_methods, require_GET, require_POST
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
 from footprint.models import LivePackets, LogPackets
 from footprint.serializers import LivePacketsSerializer, LogPacketsSerializer
 from config import config
@@ -38,7 +38,7 @@ class LogPacketsViewSet(viewsets.ModelViewSet):
   def get_all_packets(self, request):
     serializer = self.serializer_class
 
-@require_GET
+@api_view(['GET'])
 def get_log_files(request):
   global LOG_DIRECTORY
   files = []
@@ -48,7 +48,7 @@ def get_log_files(request):
 
   return JsonResponse({'files': files})
 
-@require_GET
+@api_view(['GET'])
 def start_collecting_live(request):
   global COLLECTOR_INSTANCE
   global LOGGER_INSTANCE
@@ -68,7 +68,7 @@ def start_collecting_live(request):
 
   return JsonResponse({'success': success})
 
-@require_GET
+@api_view(['GET'])
 def stop_collecting_live(request):
   global COLLECTOR_INSTANCE
   success = True
@@ -86,7 +86,7 @@ def stop_collecting_live(request):
 
   return JsonResponse({'success': success})
 
-@require_GET
+@api_view(['GET'])
 def take_all_live_packets(request):
   response = {}
   try:
@@ -101,7 +101,7 @@ def take_all_live_packets(request):
     response['success'] = False
   return JsonResponse(response)
 
-@require_POST
+@api_view(['POST'])
 def load_log_packets(request):
   global LOGGER_INSTANCE
   response = {}

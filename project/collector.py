@@ -42,7 +42,7 @@ class Collector:
     self.logger               = logger_instance
     self.protocols            = self.__get_ip_protocols()
 
-    self._local_ip_addr       = self.__get_local_endpoint()
+    # self._local_ip_addr       = self.__get_local_endpoint()
     self._refresh_interval    = int(config.get('collector', 'refresh_interval'))
     self._app_name            = config.get('main', 'app_name')
     self._timestamp_format    = config.get('main', 'timestamp_format')
@@ -196,9 +196,9 @@ class Collector:
           proto = self.__ip_protocol(int(ip.p))
           ipsrc = self.__ip2intstr(ip.src)
           ipdst = self.__ip2intstr(ip.dst)
-          outbound = str(ipsrc == self._local_ip_addr)
-          output_line = '%s,%s,%s,%s,%s,%s\n' % \
-                  (timestamp, ipsrc, ipdst, ip.len, proto, outbound)
+          # outbound = str(ipsrc == self._local_ip_addr)
+          output_line = '%s,%s,%s,%s,%s\n' % \
+                  (timestamp, ipsrc, ipdst, ip.len, proto)
           output_file.write(output_line)
 
     print '\t%d converted' % (count - nonip_count),
@@ -280,9 +280,9 @@ class Collector:
     return dict((getattr(socket, n), n[len(ip_proto_prefix):]) \
                 for n in dir(socket) if n.startswith(ip_proto_prefix))
 
-  def __get_local_endpoint(self):
-    """ Returns local endpoint ip address as int string representation """
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(('google.com',80)) # make a temp connection to site
-    addr = socket.inet_pton(socket.AF_INET, s.getsockname()[0])
-    return self.__ip2intstr(addr)
+  # def __get_local_endpoint(self):
+  #   """ Returns local endpoint ip address as int string representation """
+  #   s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+  #   s.connect(('google.com',80)) # make a temp connection to site
+  #   addr = socket.inet_pton(socket.AF_INET, s.getsockname()[0])
+  #   return self.__ip2intstr(addr)

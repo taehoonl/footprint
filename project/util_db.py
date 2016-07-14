@@ -15,9 +15,9 @@ ip2loc_modelname    = config.get('app', 'app_ip2loc_model_name')
 ip2loc_tablename    = app_name + '_' + ip2loc_modelname
 
 # sql queries
-GROUP_PACKET_QUERY      = """SELECT timestamp, ip_src, ip_dst, SUM(ip_len), ip_protocol, outbound
+GROUP_PACKET_QUERY      = """SELECT timestamp, ip_src, ip_dst, SUM(ip_len), ip_protocol
                             FROM %s
-                            GROUP BY timestamp, ip_src, ip_dst, ip_protocol, outbound
+                            GROUP BY timestamp, ip_src, ip_dst, ip_protocol
                             ORDER BY timestamp ASC"""
 LOOKUP_LOCATION_QUERY   = """SELECT * FROM %s
                             WHERE ip_from <= %s
@@ -78,16 +78,21 @@ def lookup_and_export(db_conn, src_filepath, dst_filepath):
         columns = line.strip().split(',')
         ip_src = columns[1]     # packet source ip address
         ip_dst = columns[2]     # packet destination ip address
-        outbound = is_bool(columns[5])  # True if packet is outbound
-        endpoint = ip_dst if outbound else ip_src
-        hostname = reverse_dns(endpoint) # reverse DNS hostname
+        hostname = reverse_dns(ip_src) # reverse DNS hostname
 
-        lookup_query = LOOKUP_LOCATION_QUERY % (ip2loc_tablename, endpoint)
+        # ip_src location info
+        lookup_query = LOOKUP_LOCATION_QUERY % (ip2loc_tablename, ip_src)
         db_cursor.execute(lookup_query)
         result = db_cursor.fetchone()
-
         columns.extend(list(result))
         columns.append(hostname)
+
+        # ip_dst location info
+        lookup_query = LOOKUP_LOCATION_QUERY % (ip2loc_tablename, ip_dst)
+        db_cursor.execute(lookup_query)
+        result = db_cursor.fetchone()
+        columns.extend(list(result))
+
         columns = map(quotify, columns)
         columns = ','.join(columns) + '\n'
         f_dst.write(columns)
@@ -98,7 +103,7 @@ def lookup_and_export(db_conn, src_filepath, dst_filepath):
 
   except Exception as e:
     print e
-    pdb.set_trace()
+    # pdb.set_trace()
 
   finally:
     if db_cursor:
@@ -128,7 +133,7 @@ def group_and_copy_to(db_conn, tablename, filepath):
 
   except Exception as e:
     print e
-    pdb.set_trace()
+    # pdb.set_trace()
 
   finally:
     if db_cursor:
@@ -149,7 +154,7 @@ def delete_rows(db_conn, tablename):
     db_conn.commit()
   except Exception as e:
     print e
-    pdb.set_trace()
+    # pdb.set_trace()
 
   finally:
     if db_cursor:
@@ -181,7 +186,7 @@ def copy_from(db_conn, tablename, filepath):
   except Exception as e:
     result = False
     print e
-    pdb.set_trace()
+    # pdb.set_trace()
 
   finally:
     if db_cursor:
@@ -217,7 +222,7 @@ def copy_from_with_columns(db_conn, tablename, columns, filepath):
 
   except Exception as e:
     print e
-    pdb.set_trace()
+    # pdb.set_trace()
 
   finally:
     if db_cursor:
@@ -274,22 +279,3 @@ def get_row_count(db_conn, tablename):
       db_cursor.close()
 
   return row_count
-
-
-
-# init
-# signal.signal(signal.SIGALRM, signal_handler)
-# def signal_handler(signum, frame):
-#   raise Exception('timeout: signal handler')
-# con = psycopg2.connect(database='footprint_db', user='postgres')
-
-# starttime = datetime.now()
-# cur = con.cursor()
-# # # lookup_and_export(con, 'data/log/2016-07-04-17.csv', 'data/lookup.csv')
-# # # delete_rows(con, live_temp_tablename)
-# # copy_from(con, 'live_packets', 'data/log/2016-07-05-17.csv')
-
-# get_row_count(con, 'ip2location')
-
-# endtime = datetime.now()
-# print str(endtime - starttime)
