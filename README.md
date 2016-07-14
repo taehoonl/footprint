@@ -1,23 +1,37 @@
-# footprint
+# Footprint
 
-install dependencies
+Find out where your internet traffic is coming from. This app shows the locations of your incoming and outgoing internet traffic using open-source IP2LOCATION LITE database
 
-1. sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
-2. sudo pip install virtualenv django djangorestframework psycopg2 futures dpkt pypcap
-3. install all dependencies in requirement.txt to virtualenv
+How to start app:
 
-change postgresql setting
+1. Install dependencies:
 
-1. change '/etc/postgresql/(version)/main/pg_hba.conf' file
+$ sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+$ sudo pip install virtualenv django djangorestframework psycopg2 futures dpkt pypcap
+$ install all dependencies in requirement.txt to virtualenv
 
-    # Database administrative login by Unix domain socket
-    local   all             postgres                                trust
+2. Change postgresql setting:
 
-    # TYPE  DATABASE        USER            ADDRESS                 METHOD
+change '/etc/postgresql/(version)/main/pg_hba.conf' file
 
-    # "local" is for Unix domain socket connections only
-    local   all             all                                     md5
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            md5
-    # IPv6 local connections:
-    host    all             all             ::1/128                 md5
+<pre>
+  # Database administrative login by Unix domain socket
+  local   all             postgres                                trust
+
+  # TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+  # "local" is for Unix domain socket connections only
+  local   all             all                                     md5
+  # IPv4 local connections:
+  host    all             all             127.0.0.1/32            md5
+  # IPv6 local connections:
+  host    all             all             ::1/128                 md5
+</pre>
+
+3. Download [IP2LOCATION database](https://lite.ip2location.com/database-ip-country-region-city-latitude-longitude) and place it in data/ip2location folder
+
+4. Set 'project_path' in main.ini
+
+5. Start app using script:
+
+$ python start_app.py
