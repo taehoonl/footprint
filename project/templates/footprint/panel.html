@@ -1,38 +1,38 @@
 <div id="panel" class="panel panel-default">
-	<div id="panel-heading">
-		<div id="panel-heading-glyph">
-			<a class="clickable" data-toggle="collapse" data-target="#panel-body-wrapper"></a>
-		</div>
-	</div>
-	<div id="panel-body-wrapper" class="panel-collapse collapse in">
-		<div id="panel-body" class="container">
+  <div id="panel-heading">
+    <div id="panel-heading-glyph">
+      <a class="clickable" data-toggle="collapse" data-target="#panel-body-wrapper"></a>
+    </div>
+  </div>
+  <div id="panel-body-wrapper" class="panel-collapse collapse in">
+    <div id="panel-body" class="container">
 
-				<div id="mode" class="row">
-					<h6 class="row-title">Mode</h6>
-					<div id="mode-btn" class="btn-toolbar">
-						<div id="mode-btn-group" class="btn-group btn-group-md" data-toggle="buttons">
-							<button id="start-live-btn" class="btn btn-default" ng-show="!isLive" ng-click="setIsLive(true)">
-								<span class="glyphicon glyphicon-play"></span>
-								Start Live Traffic
-							</button>
+        <div id="mode" class="row">
+          <h6 class="row-title">Mode</h6>
+          <div id="mode-btn" class="btn-toolbar">
+            <div id="mode-btn-group" class="btn-group btn-group-md" data-toggle="buttons">
+              <button id="start-live-btn" class="btn btn-default" ng-show="!isLive" ng-click="setIsLive(true)">
+                <span class="glyphicon glyphicon-play"></span>
+                Start Live Traffic
+              </button>
 
-							<button id="stop-live-btn" class="btn btn-default" ng-show="isLive" ng-click="setIsLive(false)">
-								<span class="glyphicon glyphicon-stop"></span>
-								Stop Live Traffic
-							</button>
+              <button id="stop-live-btn" class="btn btn-default" ng-show="isLive" ng-click="setIsLive(false)">
+                <span class="glyphicon glyphicon-stop"></span>
+                Stop Live Traffic
+              </button>
 
-							<button id="load-log-btn" class="btn btn-default" ng-click="openLogModal()">
-								<span class="glyphicon glyphicon-import"></span>
-								Load Logged Traffic
-							</button>
-						</div>
-					</div>
-				</div>
+              <button id="load-log-btn" class="btn btn-default" ng-click="openLogModal()">
+                <span class="glyphicon glyphicon-import"></span>
+                Load Logged Traffic
+              </button>
+            </div>
+          </div>
+        </div>
 
 
-				<div id="detail-tab" class="row">
-					
-				</div>
-		</div>
-	</div>
+        <div id="detail-tab" class="row">
+
+        </div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,7 @@
 *.pyc
 *.csv
 
+venv/*
+
 project/footprint/data/*
 project/footprint/migrations/*

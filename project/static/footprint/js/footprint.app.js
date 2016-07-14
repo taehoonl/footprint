@@ -1,10 +1,8 @@
 'use strict';
 
 var app = angular.module('footprintApp', [
-	'ngRoute',
-	'angular-loading-bar',
-	// 'ui.select',
-	// 'ui.bootstrap',
+  'ngRoute',
+  'angular-loading-bar',
 ]).run(run);
 
 /* Update xsrf $http headers to align with Django's defaults */
@@ -15,13 +13,13 @@ function run($http) {
 
 /* */
 app.config(['$routeProvider', function($routeProvider){
-	$routeProvider.
-		when('/somepage', {
-			templateUrl: '',
-			controller: 'somecontroller'
-		}).
-		otherwise({
-			redirectTo: '/'
-		})
-	},
+  $routeProvider.
+    when('/somepage', {
+      templateUrl: '',
+      controller: 'somecontroller'
+    }).
+    otherwise({
+      redirectTo: '/'
+    })
+  },
 ]);
