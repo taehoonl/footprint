@@ -12,7 +12,7 @@ Find out where your internet traffic is coming from. This app shows the location
 
 Then, install all dependencies in requirement.txt to virtualenv
 
-**2. Change postgresql setting('/etc/postgresql/(version)/main/pg_hba.conf') to: **
+**2. Change postgresql setting(/etc/postgresql/version/main/pg_hba.conf) to:**
 
 <pre>
   # Database administrative login by Unix domain socket
@@ -32,6 +32,6 @@ Then, install all dependencies in requirement.txt to virtualenv
 
 **4. Set 'project_path' in main.ini**
 
-**5. Start app using script****
+**5. Start app using script:**
 
 > python start_app.py
