@@ -13,7 +13,7 @@ a:hover {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-text-transform: uppercase;
+  text-transform: uppercase;
   color: #555;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #fff;
@@ -29,7 +29,7 @@ html,
 body {
   height: 100%;
   /*background-color: #555;*/
-  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(../../images/polygon-white.jpg) no-repeat center center fixed; 
+  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(../../images/digital-texture.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

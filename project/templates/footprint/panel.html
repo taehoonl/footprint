@@ -1,37 +1,116 @@
 <div id="panel" class="panel panel-default">
   <div id="panel-heading">
     <div id="panel-heading-glyph">
-      <a class="clickable" data-toggle="collapse" data-target="#panel-body-wrapper"></a>
+      <a id="panel-collapse-btn" class="clickable" data-toggle="collapse" data-target="#panel-body-wrapper"></a>
     </div>
   </div>
   <div id="panel-body-wrapper" class="panel-collapse collapse in">
     <div id="panel-body" class="container">
+        <div id="search" class="row col-md-12">
+          <div class="row-title">
+            <h6>SEARCH</h6>
+            <button ng-click="clearSearchMarkers()" type="button" class="btn btn-default btn-sm" onclick="this.blur();">Clear</button>
+          </div>
+          <div class="input-group stylish-input-group">
+            <form id="search-form" ng-submit="searchIPAddress(SearchInput)">
+              <input id="search-input" ng-model="SearchInput" type="text" class="form-control"  placeholder="Search IP address (ex. '172.16.4.1')">
+              <span class="input-group-addon">
+                <button id="search-btn" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>  
+              </span>
+            </form>
+          </div>
+        </div>
 
-        <div id="mode" class="row">
-          <h6 class="row-title">Mode</h6>
+        <div class="row col-md-12 divider"></div>
+
+        <div id="mode" class="row col-md-12">
+          <div class="row-title">
+            <h6>MODE</h6>
+            <button ng-click="clearPacketMarkers()" type="button" class="btn btn-default btn-sm" onclick="this.blur();">Clear</button>
+          </div>
           <div id="mode-btn" class="btn-toolbar">
             <div id="mode-btn-group" class="btn-group btn-group-md" data-toggle="buttons">
-              <button id="start-live-btn" class="btn btn-default" ng-show="!isLive" ng-click="setIsLive(true)">
+              <button id="start-live-btn" class="btn btn-success" ng-show="!isLive" ng-click="setIsLive(true)">
                 <span class="glyphicon glyphicon-play"></span>
-                Start Live Traffic
+                Start Live
               </button>
-
-              <button id="stop-live-btn" class="btn btn-default" ng-show="isLive" ng-click="setIsLive(false)">
+              <button id="stop-live-btn" class="btn btn-danger" ng-show="isLive" ng-click="setIsLive(false)">
                 <span class="glyphicon glyphicon-stop"></span>
-                Stop Live Traffic
+                Stop Live
               </button>
-
               <button id="load-log-btn" class="btn btn-default" ng-click="openLogModal()">
                 <span class="glyphicon glyphicon-import"></span>
-                Load Logged Traffic
+                Load Log
               </button>
             </div>
           </div>
         </div>
 
+        <div class="row col-md-12 divider"></div>
 
-        <div id="detail-tab" class="row">
+        <div id="status" class="row col-md-12">
+          <h6 class="row-title">STATUS</h6>
+          <span id="status-detail-live" class="label label-pill label-default col-md-12" ng-show="isLive">LIVE MODE<span ng-bind="statusDetail"></span></span>
+          <span id="status-detail-log" class="label label-pill label-default col-md-12" ng-show="!isLive">LOG FILE MODE<span ng-bind="statusDetail"></span></span>
+        </div>
 
+        <div class="row col-md-12 divider"></div>
+
+        <div id="detail" class="row col-md-12">
+          <h6 class="row-title">Detail</h6>
+          <div id="detail-body" class="well well-sm">
+            <form role="form"> 
+              <!-- location detail -->
+              <div class="form-group has-feedback has-feedback-left" title="City, Region (Country)">
+                <input type="text" class="form-control input-sm" placeholder="City, Region (Country)" ng-model="detailLocation" ng-disabled="true"/>
+                <i class="form-control-feedback glyphicon glyphicon-map-marker"></i>
+              </div>
+
+              <!-- IP address range detail -->
+              <div class="form-group has-feedback has-feedback-left" title="IP Address Range">
+                <input type="text" class="form-control input-sm" placeholder="IP Address Range" ng-model="detailIPRange" ng-disabled="true"/>
+                <i class="form-control-feedback glyphicon glyphicon-cog"></i>
+              </div>
+
+              <!-- Data transfer amount detail -->
+              <div class="form-group has-feedback has-feedback-left half-row margin-right" title="Total Data Transfer Amount">
+                <input type="text" class="form-control input-sm" placeholder="Data Transfer" ng-model="detailDataTransfer" ng-disabled="true"/>
+                <i class="form-control-feedback glyphicon glyphicon-transfer"></i>
+              </div>
+
+              <!-- IP Protocols detail -->
+              <div class="form-group has-feedback has-feedback-left half-row" title="IP Protocols Used in Data Transfer">
+                <input type="text" class="form-control input-sm" placeholder="IP Protocols" ng-model="detailIPProtocol" ng-disabled="true"/>
+                <i class="form-control-feedback glyphicon glyphicon-stats"></i>
+              </div>
+            </form>
+
+            <div id="data-transfer-chart"></div>
+
+            <form role="form"> 
+              <!-- Hostname detail -->
+              <div class="form-group hover-top" title="Hostnames that this location is associated with">
+                <textarea rows="2" class="form-control" placeholder="Associated hostnames" ng-model="detailHostname" ng-disabled="true">
+                </textarea>
+              </div>
+
+              <!-- Source IP detail -->
+              <div class="form-group hover-top half-row margin-right" title="Source IP Addresses that this location is associated with">
+                <textarea rows="2" class="form-control" placeholder="Source IP" ng-model="detailIPSrc" ng-disabled="true">
+                </textarea>
+              </div>
+              <!-- Destination IP detail -->
+              <div class="form-group hover-top half-row" title="Destination IP Addresses that this location is associated with">
+                <textarea rows="2" class="form-control" placeholder="Destination IP" ng-model="detailIPDst" ng-disabled="true">
+                </textarea>
+              </div>
+
+
+            </form>
+           
+          </div>
         </div>
     </div>
   </div>

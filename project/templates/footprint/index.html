@@ -21,37 +21,49 @@
   <link href="{% static "footprint/css/footprint.css" %}" rel="stylesheet" />
   <script src="{% static "footprint/js/footprint.app.js" %}"></script>
   <script src="{% static "footprint/js/footprint.services.js" %}"></script>
+  <script src="{% static "footprint/js/footprint.controller.d3.js" %}"></script>
   <script src="{% static "footprint/js/footprint.controller.map.js" %}"></script>
-  <script src="{% static "footprint/js/footprint.controller.action.js" %}"></script>
+  <script src="{% static "footprint/js/footprint.controller.marker.js" %}"></script>
+  <script src="{% static "footprint/js/footprint.controller.panel.js" %}"></script>
 
   <!-- Esri + Leaflet -->
   <link href="{% static "css/leaflet.esri.css" %}" rel="stylesheet" />
   <script src="{% static "js/leaflet.js" %}"></script>
   <script src="{% static "js/esri-leaflet.js" %}"></script>
-  <!-- Esri + Leaflet MarkerCluster -->
+  <!-- Leaflet MarkerCluster -->
   <link href="{% static "css/MarkerCluster.Default.css" %}" rel="stylesheet" />
   <link href="{% static "css/MarkerCluster.css" %}" rel="stylesheet" />
   <script src="{% static "js/leaflet.markercluster.js" %}"></script>
+  <!-- Leaflet AwesomeMarkers -->
+  <link href="{% static "css/leaflet.awesome-markers.css" %}" rel="stylesheet" />
+  <script src="{% static "js/leaflet.awesome-markers.min.js" %}"></script>
 
-  <!-- Others -->
+  <!-- collapse -->
   <script src="{% static "js/collapse.js" %}"></script>
-
+  <!-- loading bar -->
   <link href="{% static "css/loading-bar.css" %}" rel="stylesheet" />
   <script src="{% static "js/loading-bar.js" %}"></script>
+  <!-- d3 -->
+  <script src="{% static "js/d3.js" %}"></script>
+  <!-- c3 (d3 based library) -->
+  <link href="{% static "css/c3.min.css" %}" rel="stylesheet" />
+  <script src="{% static "js/c3.min.js" %}"></script>
 
 
 </head>
 <body ng-app="footprintApp">
-  <div ng-controller="actionController">
+  <div ng-controller="panelController">
     {% include "modal-log-file.html" %}
 
-    <div id="panel-wrapper">
+    <div id="panel-wrapper" ng-controller="d3Controller">
       {% include "panel.html" %}
     </div>
   </div>
 
-  <div id="map-wrapper" ng-controller="mapController">
-    <div id="map"></div>
+  <div id="map-wrapper">
+    <div id="map" ng-controller="mapController"></div>
+    <div id="marker" ng-controller="markerController"></div>
+    <div id="map-key"></div>
   </div>
 
 </body>

@@ -6,16 +6,21 @@ html, body {
   padding: 0;
 }
 
-.leaflet-control-zoom {
-  display: none;
+h6 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 14px;
+  display: inline-block;
 }
 
-.btn:focus, .btn:active, a:focus {
-  outline: none !important;
+textarea.form-control {
+  padding: 5px 10px;
+  font-size: 12px;
 }
 
-.clickable {
-  cursor: pointer;
+textarea.half-row {
+  margin: auto;
 }
 
 a.clickable {
@@ -24,6 +29,122 @@ a.clickable {
 
 a.clickable:hover {
   text-decoration: none;
+}
+
+/* leaflet */
+.leaflet-control-zoom {
+  display: none;
+}
+.marker-cluster-large {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 25px !important;
+}
+.marker-cluster-large div {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 20px !important;
+}
+.marker-cluster-large span {
+  line-height: 40px !important;
+  font-size: 14px;
+}
+
+.marker-cluster-medium {
+  width: 45px !important;
+  height: 45px !important;
+}
+.marker-cluster-medium div {
+  width: 35px !important;
+  height: 35px !important;
+}
+.marker-cluster-medium span {
+  line-height: 35px !important;
+  font-size: 13px;
+}
+
+/* panel */
+.btn:focus, .btn:active, a:focus {
+  outline: none !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.label {
+  padding: 9px 12px;
+  font-size: 14px;
+}
+
+.divider {
+  height: 1px;
+  width: 91%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0 0 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.stylish-input-group {
+  line-height: 1;
+  display: block !important;
+}
+.stylish-input-group .input-group-addon{
+  background: white !important; 
+}
+.stylish-input-group .form-control{
+  border-right:0; 
+  box-shadow:0 0 0; 
+  border-color:#ccc;
+}
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+.form-control[disabled]{
+  cursor: default;
+  background-color: #fff;
+}
+.has-feedback-left .form-control-feedback {
+  left: 0;
+}
+.has-feedback-left input.input-sm {
+  padding-left: 30px;  @input-height-small;
+  padding-right: 5px;
+}
+
+.half-row {
+  display: inline-block;
+  width: 49.5%;
+  float: left;
+}
+.margin-right {
+  margin-right: 2px;
+}
+
+.c3-chart-arc text {
+  display: none;
+}
+
+.row-title .btn {
+  text-transform: uppercase;
+  padding: 2px 10px;
+  font-size: 12px;
+  margin-top: 5px;
+  float: right;
+}
+
+.row-title .btn:focus {
+  outline:none;
+}
+#mode-btn-group .btn {
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 #content-wrapper {
@@ -45,12 +166,14 @@ a.clickable:hover {
   right: 0;
 }
 
-
 #panel {
   margin-top: 10px;
   margin-right: 10px;
+  width: 350px;
+}
+
+#panel .container {
   width: 380px;
-  /*border: none !important;*/
 }
 
 #panel-heading {
@@ -84,7 +207,65 @@ a.clickable:hover {
   height: 630px;
 }
 
+#search-form {
+  display: inline-table;
+  width: 100%;
+}
+
+#mode-btn, #mode-btn-group {
+  width: 100%;
+}
+
+#start-live-btn, #stop-live-btn, #load-log-btn {
+  width: 50%;
+}
+
+#stop-live-btn {
+  border-radius: 4px 0 0 4px;
+}
+#load-log-btn {
+  background-color: #777;
+  border-color: #777;
+  color: #fff;
+}
+#load-log-btn:hover, #load-log-btn:active {
+  background-color: #666;
+  border-color: #666;
+}
+
+#status-detail-live, #status-detail-log {
+  background-color: #fff;
+}
+#status-detail-live {
+  color: #5cb85c;
+  border: 1px solid #4cae4c;
+}
+#status-detail-log {
+  color: #555;
+  border: 1px solid #555;
+}
+
 #modal-log-file {
   z-index: 1050;
 }
 
+#detail-body {
+  height: 345px;
+  padding: 4px 4px 0 4px;
+  overflow: auto;
+}
+
+#data-transfer-chart {
+  clear: left;
+  height: 125px;
+}
+
+#map-key {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  z-index: 999;
+  /*background-color: #fff;*/
+  background-color: transparent;
+}

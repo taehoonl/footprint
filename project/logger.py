@@ -9,7 +9,9 @@ import psycopg2
 import pdb
 
 class Logger:
-  """
+  """ Logger is a thread that logs packet data collected by Collector. 
+
+      Given
   """
   def __init__(self):
     self.executor       = concurrent.futures.ThreadPoolExecutor(1)
@@ -32,7 +34,9 @@ class Logger:
                           self._app_log_tablename)
 
   def log_file(self, filepath):
-    """
+    """ Given log file, process each row by copying each row into 
+        appropriate log file. 
+        Assigns this task to threadpool.
     """
     future = self.executor.submit(self.__partition_log_file, filepath)
     r = future.result()
@@ -43,14 +47,18 @@ class Logger:
       # print '\tlogged target file(%s)' % filepath
 
   def copy_file_into_model(self, filename):
-    """
+    """ Copies given file into LogPackets model.
+        Assigns this task to threadpool
     """
     future = self.executor.submit(self.__copy_file_into_model, filename)
     r = future.result()
     return r
 
   def __copy_file_into_model(self, filename):
-    """
+    """ Copies given file into LogPackets model.
+        Returns true if successful. Otherwise, false
+      Args:
+        filename(String): name of file to copy data from
     """
     try:
       filepath = os.path.join(self._project_path, \
@@ -74,7 +82,11 @@ class Logger:
 
 
   def __partition_log_file(self, filepath):
-    """
+    """ Given file to process, copy each row of file into appropriate
+        log file based on timestamp. 
+        Returns true if successful. Otherwise, false
+      Args:
+        filepath(String): path to file to process
     """
     try:
       filepath_abs = os.path.join(self._project_path, filepath)
@@ -99,8 +111,7 @@ class Logger:
       return False
 
   def __close_open_files(self):
-    """
-    """
+    """ Close all open files that Logger has access to """
     for (fpath, fopen) in self._open_files.iteritems():
       try:
         fopen.close()
@@ -111,7 +122,10 @@ class Logger:
     self._open_files.clear()
 
   def __timestamp_to_filepath(self, timestamp_str):
-    """
+    """ Given timestamp, returns full path to file that timestamp belong to
+      Args:
+        timestamp_str(String): timestamp string
+
     """
     filename = 'invalid_timestamp.log'
     try:

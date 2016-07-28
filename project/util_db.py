@@ -85,13 +85,14 @@ def lookup_and_export(db_conn, src_filepath, dst_filepath):
         db_cursor.execute(lookup_query)
         result = db_cursor.fetchone()
         columns.extend(list(result))
-        columns.append(hostname)
 
         # ip_dst location info
         lookup_query = LOOKUP_LOCATION_QUERY % (ip2loc_tablename, ip_dst)
         db_cursor.execute(lookup_query)
         result = db_cursor.fetchone()
         columns.extend(list(result))
+
+        columns.append(hostname)
 
         columns = map(quotify, columns)
         columns = ','.join(columns) + '\n'

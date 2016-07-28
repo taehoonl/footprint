@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^stop_collecting/', stop_collecting_live),
     url(r'^take_all_live_packets/', take_all_live_packets),
     url(r'^load_log_packets/', load_log_packets),
+    url(r'^search_ip_address/', search_ip_address),
 ]
 
 urlpatterns.extend(router.urls)
