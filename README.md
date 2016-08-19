@@ -2,9 +2,24 @@
 
 Find out where your internet traffic is coming from. This app shows the locations of your incoming and outgoing internet traffic using open-source IP2LOCATION LITE database
 
+## Features:
+
+**Collect, record/log and display live internet IP packet traffic**
+**Display logged internet IP packet traffic**
+**Display geolocation info about internet traffic, including **
+  location info,
+  IP range,
+  data transfer amount,
+  IP protocols,
+  associated hostnames,
+  associated IP addresses,
+  and more
+
+
 ## How to start app:
 
-**1. Install dependencies:**
+**1. Install dependencies in requirement.txt:**
+> ex)
 
 > sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
 
@@ -30,7 +45,7 @@ Then, install all dependencies in requirement.txt to virtualenv
 
 **3. Download [IP2LOCATION database](https://lite.ip2location.com/database-ip-country-region-city-latitude-longitude) and place it in data/ip2location folder**
 
-**4. Set 'project_path' in main.ini**
+**4. Set 'project_path' and other environment dependent variables as you see fit in main.ini**
 
 **5. Start app using script:**
 
