@@ -5,14 +5,23 @@ Find out where your internet traffic is coming from. This app shows the location
 ## Features:
 
 **Collect, record/log and display live internet IP packet traffic**
+
 **Display logged internet IP packet traffic**
-**Display geolocation info about internet traffic, including **
+
+**Display geolocation info about internet traffic, including**
+
   location info,
+
   IP range,
+
   data transfer amount,
+
   IP protocols,
+
   associated hostnames,
+
   associated IP addresses,
+
   and more
 
 
