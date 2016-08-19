@@ -2,6 +2,12 @@
 
 Find out where your internet traffic is coming from. This app shows the locations of your incoming and outgoing internet traffic using open-source IP2LOCATION LITE database
 
+## Screenshot/Video:
+
+![Live Mode Screenshot](https://cloud.githubusercontent.com/assets/2279564/17813316/df3d4e0e-6665-11e6-8cc9-2722c4ff5311.png)
+
+![Log Mode Screenshot](https://cloud.githubusercontent.com/assets/2279564/17813389/2067e7cc-6666-11e6-858e-ee6ba32f6e01.png)
+
 ## Features:
 
 **1. Collect, record/log and display live internet IP packet traffic**
