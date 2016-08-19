@@ -4,13 +4,15 @@ Find out where your internet traffic is coming from. This app shows the location
 
 ## Screenshot/Video:
 
+Live Mode(uses real-time/live internet traffic):
 ![Live Mode Screenshot](https://cloud.githubusercontent.com/assets/2279564/17813316/df3d4e0e-6665-11e6-8cc9-2722c4ff5311.png)
 
+Log Mode(uses logged/recorded internet traffic):
 ![Log Mode Screenshot](https://cloud.githubusercontent.com/assets/2279564/17813389/2067e7cc-6666-11e6-858e-ee6ba32f6e01.png)
 
 ## Features:
 
-**1. Collect, record/log and display live internet IP packet traffic**
+**1. Collect, record/log and display real-time(live) internet IP packet traffic**
 
 **2. Display logged internet IP packet traffic**
 
